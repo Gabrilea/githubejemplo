@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="danger" aling="center">
+    <ion-title>hero-detalles</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defailHref="/"></ion-back-button>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list limes="full">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input required type="text" placeholder="Nombre" [(ngModel)]="heroe.nombre"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Alterego</ion-label>
+      <ion-input required type="text" placeholder="Alterego" [(ngModel)]="heroe.alterego"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Edad</ion-label>
+      <ion-input required type="number" placeholder="Edad" [(ngModel)]="heroe.edad"></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Nivel</ion-label>
+      <ion-select interface="popover" [(ngModel)]="heroe.nivel" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="1">Dios</ion-select-option>
+          <ion-select-option value="2">Semidios</ion-select-option>
+          <ion-select-option value="3">Poderoso</ion-select-option>
+          <ion-select-option value="4">Normal</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <ion-label>Estado</ion-label>
+      <ion-select interface="popover" [(ngModel)]="heroe.vivomuerto" okText="Okay" cancelText="Dismiss">
+          <ion-select-option value="vivo">Vivo</ion-select-option>
+          <ion-select-option value="muerto">Muerto</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+  </ion-list>
+  <ion-button color="dark"[disabled]="!heroe.nombre && !heroe.alterego && !heroe.edad && !heroe.nivel &&!heroe.vivomuerto" expand="full" (click)="guardarHeroe()">Guardar</ion-button>
+
+  <ion-fab *ngIf="heroeid" vertical="bottom" horizontal="end" slot="fixed" routerLink="/hero-detalles">
+  <ion-fab-button color="medium" (click)="remove(heroeid)" routerLink="/" routerDirection="forward" >
+  <ion-icon name="trash"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+</ion-content>
